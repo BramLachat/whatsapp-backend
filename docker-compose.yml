@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+    whatsappdb_mongo:
+        container_name: "whatsappdb_mongo"
+        image: mongo:3.6
+        ports:
+            - "27017:27017"
+        entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0"]
+        # environment:
+        #     - MONGO_INITDB_DATABASE=whatsappdb
+        #     - MONGO_INITDB_ROOT_USERNAME=admin
+        #     - MONGO_INITDB_ROOT_PASSWORD=admin
+#    volumes:
+#      - ./whatsappdb_mongo:/data/db
