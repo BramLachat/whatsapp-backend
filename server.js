@@ -3,6 +3,7 @@ import express from "express"; //(kan mogelijks niet werken als ge een te oude n
 import mongoose from "mongoose";
 import Messages from "./dbMessages.js";
 import pusher from "./pusher.js";
+//import cors from "cors"; you can use this to replace the res.setHeader (lines 16 - 20) by app.use(cors())
 //const express = require("express");
 
 //app config
@@ -46,6 +47,8 @@ db.once("open", () => {
             pusher.trigger("messages", "inserted", {
                 name: messageDetails.name,
                 message: messageDetails.message,
+                timestamp: messageDetails.timestamp,
+                received: messageDetails.received,
             });
         } else {
             console.log("Error triggering Pusher");
