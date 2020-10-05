@@ -10,5 +10,5 @@ services:
         #     - MONGO_INITDB_DATABASE=whatsappdb
         #     - MONGO_INITDB_ROOT_USERNAME=admin
         #     - MONGO_INITDB_ROOT_PASSWORD=admin
-#    volumes:
-#      - ./whatsappdb_mongo:/data/db
+        volumes:
+            - ./whatsappdb_mongo:/data/db
