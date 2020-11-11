@@ -1,0 +1,71 @@
+https://www.youtube.com/watch?v=gzdQDxzW2Tw&t=1645s --> klaar
+
+start frontend: whatsapp-mern:
+	npm install
+	npm start
+
+start backend: whatsapp-backend:
+	docker-compose up -d
+	see "initialize the mongo container" (this contains some difficulties
+	may be a good exercise to replace express by spring:
+	https://developer.mongodb.com/quickstart/java-change-streams)
+
+
+npm install @material-ui/core
+
+whatsapp-backend:
+	git init
+	npm init (creates a package.json file) -->
+		package name: default (enter)
+		version: default (enter)
+		description empty (enter)
+		entry point: server.js
+		test command: emtpy (enter)
+		git repository: empty (enter)
+		keywords: empty (enter)
+		author: Bram Lachat
+		license: default (enter)
+	npm i express mongoose
+		(mongoose is conectivity to mongodb)
+
+// "type": "module" --> lets you type: "import express from 'express'", instead of: "const express = require('express')"
+
+npm install nodemon (Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development. Install it using npm.
+
+Just use nodemon instead of node to run your code, and now your process will automatically restart when your code changes.)
+(dit heb ik niet gedaan) ==> code runnen via 'node server.js' <-> 'nodemon server.js'
+
+initialize the mongo container:
+	1. go into the mongo shell (docker exec -it whatsappdb_mongo mongo)
+	(2. 'mongo')
+	3. 'rs.initiate()'
+	4. close mongo shell and open again
+	5. 'mongo'
+	6. 'use whatsappdb' (creates a whatsappdb database)
+	7. 'db.createUser({user: "admin", pwd: "admin", roles: []})'
+	8. startup nodejs server with 6 lines in server.js in comment
+	9. put via postman a new message in de database ==> the whatsappdb will then be created
+	10. remove the commments from server.js and startup server.js again.
+
+Pusher is used to make mongodb realtime!!! ==> npm i pusher
+
+frontend ==> npm i pusher-js
+frontend ==> npm i axios
+
+pusher alternatives: 
+	https://kuzzle.io/
+	https://www.leggetter.co.uk/real-time-web-technologies-guide/#_jetty
+	https://alternativeto.net/software/pusher/?license=opensource
+	https://alternativeto.net/software/pusher/
+	RabbitMQ: Dit wordt gebruikt voor communicatie tussen microservices!
+	socket.io --> zeer populair of npm trends
+	jetty --> enkel java, en zag er wat brak uit :p
+	emitter.io --> zeer lage score in npm trends + weinig pulls op docker hub
+	deepstream.io --> zeer lage score in npm trends + grote image op docker hub, bevat ook postgres/monog/... database inbegrepen
+	kuzzle --> ook niet echt veel pulls op docker hub + ook databases inbegrepen
+
+	https://medium.com/swlh/build-your-own-realtime-database-with-socket-io-and-mongodb-1c561c2bb87
+	https://www.freecodecamp.org/news/how-to-create-a-realtime-app-using-socket-io-react-node-mongodb-a10c4a1ab676/
+
+backend ==> npm install socket.io
+frontend ==> npm i socket.io-client
